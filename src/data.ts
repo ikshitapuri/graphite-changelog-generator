@@ -51,6 +51,6 @@ const changelogEntries: ChangelogEntry[] = [
 
 export const dummyChangelog: Changelog = {
     id: "changelog",
-    title: "Alphabet Changelog",
     entries: changelogEntries,
   };
+

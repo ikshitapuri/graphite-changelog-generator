@@ -1,5 +1,5 @@
 import { ChangelogEntry as ChangelogEntryType } from "../types";
-import Tag from "./tag";
+import Tag from "./Tag";
 
 const ChangelogEntry = ({ entry }: { entry: ChangelogEntryType }) => {
     return (

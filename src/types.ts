@@ -1,7 +1,6 @@
 /* Represents the entire changelog */
 export type Changelog = {
     id: string;
-    title: string;
     entries: ChangelogEntry[];
 }
 
