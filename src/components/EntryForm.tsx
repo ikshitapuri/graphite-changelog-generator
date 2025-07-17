@@ -198,16 +198,19 @@ export default function EntryForm() {
                                 Generated Changelog:
                             </h3>
                             <div className="text-sm text-gray-600 whitespace-pre-wrap">
-                                <p className="text-sm text-gray-700 mb-2 font-bold">
+                                <p className="text-sm text-gray-700 mb-1 font-bold">
                                     Title:
                                 </p>
                                 <p className="text-sm text-gray-600 whitespace-pre-wrap font-bold">
                                     {generatedChangelog.title}
                                 </p>
+                                <p className="text-sm text-gray-700 mt-2 font-bold mb-1">
+                                    Summary:
+                                </p>
                                 <p className="text-sm text-gray-600 whitespace-pre-wrap">
                                     {generatedChangelog.summary}
                                 </p>
-                                <p className="text-sm text-gray-600 whitespace-pre-wrap">
+                                <p className="text-sm text-gray-600 whitespace-pre-wrap mt-4">
                                     {generatedChangelog.points
                                         .map(
                                             (point: {
