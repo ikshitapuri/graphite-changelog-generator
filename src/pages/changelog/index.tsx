@@ -1,6 +1,7 @@
 import ChangelogEntry from '@/components/ChangelogEntry'
 import { useEffect, useState } from 'react'
 import { Changelog as ChangelogType } from '@/types'
+import { serializeChangelog } from '@/utils/serializer'
 
 const Changelog = () => {
     const [changelog, setChangelog] = useState<ChangelogType>()
@@ -11,7 +12,8 @@ const Changelog = () => {
                 const response = await fetch('/api/get-changelog')
                 const parsedResponse = await response.json()
                 if (parsedResponse.data) {
-                    setChangelog(parsedResponse.data as ChangelogType)
+                    const changelog = serializeChangelog(parsedResponse.data)
+                    setChangelog(changelog)
                 }
             } catch (error) {
                 console.error('Error fetching changelog:', error)

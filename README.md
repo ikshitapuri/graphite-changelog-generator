@@ -94,6 +94,7 @@
     - Click "Publish" to save the changelog entry
 
 3. **View Changelog**:
+
     - Navigate to `/changelog` to see all published entries
     - Entries are sorted by date (newest first)
 

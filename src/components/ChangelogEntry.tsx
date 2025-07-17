@@ -11,13 +11,11 @@ const ChangelogEntry = ({ entry }: { entry: ChangelogEntryType }) => {
                     {entry.title}
                 </h2>
                 <span className="text-sm text-gray-500">
-                    {entry.date
-                        .toLocaleDateString('en-US', {
-                            year: 'numeric',
-                            month: '2-digit',
-                            day: '2-digit',
-                        })
-                        .replace(/\//g, '-')}
+                    {entry.date.toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit',
+                    })}
                 </span>
             </div>
 
