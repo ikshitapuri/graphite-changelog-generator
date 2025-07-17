@@ -2,6 +2,10 @@
 
 https://www.loom.com/share/02c3f416c85f4bbda5d7c8d7d6633ead?sid=3dd540c9-4a91-49a3-9d0e-d761e0256220
 
+## Thought Process
+
+I wanted to add a visual element to the changelog so it is easy to glance over it and understand the important changes. So, I decided to add the tags to each bullet point. I feel it adds a bit more information and sometimes developers may forget to add fix, feature, refactor in their commit messages. This helps users to easily recognize the specific catgories. I also wanted to add github signin so that I don't have to paste the commit messages and I could automatically pull all commit messages from a specific branch.
+
 ## Features
 
 -   🤖 **AI-Powered Generation**: Uses OpenAI GPT-3.5rbo to convert raw commit messages into polished changelog entries
