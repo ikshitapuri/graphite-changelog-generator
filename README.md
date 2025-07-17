@@ -4,7 +4,9 @@ https://www.loom.com/share/02c3f416c85f4bbda5d7c8d7d6633ead?sid=3dd540c9-4a91-49
 
 ## Thought Process
 
-I wanted to add a visual element to the changelog so it is easy to glance over it and understand the important changes. So, I decided to add the tags to each bullet point. I feel it adds a bit more information and sometimes developers may forget to add fix, feature, refactor in their commit messages. This helps users to easily recognize the specific catgories. I also wanted to add github signin so that I don't have to paste the commit messages and I could automatically pull all commit messages from a specific branch.
+I wanted to add a visual element to the changelog so it is easy to glance over and understand the important changes. So, I decided to add the tags to each bullet point (fix, feature, refactor). I feel it adds a bit more information and helps users to easily recognize the specific categories and what is relevant in the entry. 
+
+To streamline the workflow, I wanted to integrate GitHub sign-in. This would allow me to automatically pull commit messages from a selected branch, instead of manually pasting them in. This would make changelog generation faster and more reliable.
 
 ## Features
 
