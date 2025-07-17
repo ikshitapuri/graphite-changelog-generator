@@ -71,20 +71,11 @@ export default async function handler(
         }
 
         // Remove markdown code blocks and newlines
-        // let cleanedResponse = response.trim();
-        // cleanedResponse = cleanedResponse.replace(/^```json\n/, '').replace(/\n```$/, '').replace(/^```\n/, '')
-        // console.log(cleanedResponse);
-
-        const cleanedResponse = `{
-        "summary": "This update introduces a new form component, changes button colors for improved visibility, fixes a bug related to modal closure, updates post-fetching logic, and switches the Next.js API version to 14.",
-        "points": [
-            { "category": "Feature", "text": "Added new form component." },
-            { "category": "Feature", "text": "Updated button colors." },
-            { "category": "Fix", "text": "Resolved bug with closing modals." },
-            { "category": "Refactor", "text": "Enhanced logic for fetching posts." },
-            { "category": "Refactor", "text": "Switched Next.js API version to 14." }
-        ]
-    }`
+        let cleanedResponse = response.trim()
+        cleanedResponse = cleanedResponse
+            .replace(/^```json\n/, '')
+            .replace(/\n```$/, '')
+            .replace(/^```\n/, '')
 
         try {
             const parsedData = JSON.parse(cleanedResponse)
