@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import fs from 'fs'
 import path from 'path'
-import { Changelog, ChangelogEntry, ChangelogEntryPointCategory } from '@/types'
+import { Changelog, ChangelogEntryPointCategory } from '@/types'
 
 // Add entry and save the changelog to the data directory in JSON format
 export default async function handler(
@@ -37,9 +37,9 @@ export default async function handler(
         }
 
         // New entry
-        const newEntry: ChangelogEntry = {
+        const newEntry = {
             id: crypto.randomUUID(),
-            date: new Date(date),
+            date: date,
             title,
             summary,
             points: points.map((point: { category: string; text: string }) => ({

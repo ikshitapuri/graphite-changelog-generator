@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 type GeneratedChangelog = {
+    title: string
     summary: string
     points: {
         category: string
@@ -12,7 +13,11 @@ export default function EntryForm() {
     const [commitMessages, setCommitMessages] = useState<string>('')
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [generatedChangelog, setGeneratedChangelog] =
-        useState<GeneratedChangelog>({ summary: '', points: [] })
+        useState<GeneratedChangelog>({
+            title: '',
+            summary: '',
+            points: [],
+        })
     const [isPublishing, setIsPublishing] = useState<boolean>(false)
 
     // Get current date in YYYY-MM-DD format
@@ -55,13 +60,22 @@ export default function EntryForm() {
             }
 
             // Handle the new response format with summary and points
-            if (parsedResponse.data.summary && parsedResponse.data.points) {
+            if (
+                parsedResponse.data.summary &&
+                parsedResponse.data.points &&
+                parsedResponse.data.title
+            ) {
                 setGeneratedChangelog({
+                    title: parsedResponse.data.title,
                     summary: parsedResponse.data.summary,
                     points: parsedResponse.data.points,
                 })
             } else {
-                setGeneratedChangelog({ summary: '', points: [] })
+                setGeneratedChangelog({
+                    title: '',
+                    summary: '',
+                    points: [],
+                })
             }
         } catch (error) {
             console.error('Error generating changelog:', error)
@@ -94,10 +108,10 @@ export default function EntryForm() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    date: selectedDate,
+                    date: new Date(selectedDate).toISOString(),
                     summary: generatedChangelog.summary,
                     points: generatedChangelog.points,
-                    title: 'New Changelog Entry',
+                    title: generatedChangelog.title,
                 }),
             })
 
@@ -111,7 +125,11 @@ export default function EntryForm() {
 
             // Clear the form
             setCommitMessages('')
-            setGeneratedChangelog({ summary: '', points: [] })
+            setGeneratedChangelog({
+                title: '',
+                summary: '',
+                points: [],
+            })
         } catch (error) {
             console.error('Error saving changelog:', error)
             alert('Failed to save changelog. Please try again.')
@@ -172,6 +190,7 @@ export default function EntryForm() {
 
             {/* Generated Summary */}
             {generatedChangelog.summary &&
+                generatedChangelog.title &&
                 generatedChangelog.points.length > 0 && (
                     <div className="flex flex-col gap-4">
                         <div className="mt-6 p-4 bg-gray-50 rounded-md border">
@@ -179,16 +198,25 @@ export default function EntryForm() {
                                 Generated Changelog:
                             </h3>
                             <div className="text-sm text-gray-600 whitespace-pre-wrap">
-                                {`${
-                                    generatedChangelog.summary
-                                }\n\n${generatedChangelog.points
-                                    .map(
-                                        (point: {
-                                            category: string
-                                            text: string
-                                        }) => `• ${point.text}`
-                                    )
-                                    .join('\n')}`}
+                                <p className="text-sm text-gray-700 mb-2 font-bold">
+                                    Title:
+                                </p>
+                                <p className="text-sm text-gray-600 whitespace-pre-wrap font-bold">
+                                    {generatedChangelog.title}
+                                </p>
+                                <p className="text-sm text-gray-600 whitespace-pre-wrap">
+                                    {generatedChangelog.summary}
+                                </p>
+                                <p className="text-sm text-gray-600 whitespace-pre-wrap">
+                                    {generatedChangelog.points
+                                        .map(
+                                            (point: {
+                                                category: string
+                                                text: string
+                                            }) => `• ${point.text}`
+                                        )
+                                        .join('\n')}
+                                </p>
                             </div>
                         </div>
 

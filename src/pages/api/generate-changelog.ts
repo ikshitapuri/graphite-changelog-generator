@@ -34,17 +34,19 @@ export default async function handler(
             content: `Here is a list of commit messages: ${commits}
       
       Instructions:
-        - First, write a short, one-paragraph (around 3-4 sentences) summary explaining overall what changed in simple, friendly language.
+        - First, write a short, one-paragraph (around 2-3 sentences) summary explaining overall what changed in simple, friendly language.
         - Then, provide up to 5 bullet points summarizing the most important and user-relevant changes. Keep it short and concise.
         - Label each bullet point with a category ("Feature", "Fix", "Refactor"). If you are not sure, use "Refactor".
         - Ignore test changes, dependency bumps, or purely technical maintenance.
         - Use present tense and active voice.
         - Do not include raw commit messages or extra commentary.
-        
+        - Also include a title for the changelog entry. The title should be a short, descriptive title for the changelog entry.
+        - The title should be a single sentence.
         
         Output a valid JSON object with this shape:
 
         {
+            "title": "Your title here.",
             "summary": "Your summary text here.",
             "points": [
                 { "category": "fix", "text": "Description here." },

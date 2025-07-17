@@ -24,7 +24,13 @@ const ChangelogEntry = ({ entry }: { entry: ChangelogEntryType }) => {
             {/* Summary */}
             <div className="flex flex-col gap-2">
                 <h2 className="text-xl font-bold">Overview</h2>
-                <p>{entry.summary}</p>
+                {Array.isArray(entry.summary) ? (
+                    entry.summary.map((summaryItem, idx) => (
+                        <p key={idx}>{summaryItem}</p>
+                    ))
+                ) : (
+                    <p>{String(entry.summary)}</p>
+                )}
             </div>
 
             {/* Changes */}

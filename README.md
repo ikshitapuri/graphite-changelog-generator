@@ -1,40 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Changelog Generator
+
+## Features
+
+-   🤖 **AI-Powered Generation**: Uses OpenAI GPT-3.5rbo to convert raw commit messages into polished changelog entries
+-   📝 **Smart Summarization**: Automatically adds a title and summary to the changelog entry
+-   📊 **Categorized Changes**: Automatically tags changes as fix, feature, or refactor
+-   💾 **Persistent Storage**: Saves changelog entries to local JSON file
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+-   Node.js18
+-   npm, yarn, pnpm, or bun
+-   OpenAI API key
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+1. **Clone the repository**
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+    ```bash
+    git clone <repository-url>
+    cd changelog-generator
+    ```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+2. **Install dependencies**
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+    ```bash
+    npm install
+    # or
+    yarn install
+    # or
+    pnpm install
+    ```
 
-## Learn More
+3. **Set up environment variables**
 
-To learn more about Next.js, take a look at the following resources:
+    Create a `.env.local` file in the root directory:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+    ```bash
+    OPENAI_API_KEY=your_openai_api_key_here
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    To get an OpenAI API key:
 
-## Deploy on Vercel
+    - Visit [OpenAI Platform](https://platform.openai.com/)
+    - Sign up or log in
+    - Navigate to API Keys section
+    - Create a new API key
+    - Copy the key and paste it in your `.env.local` file
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Run the development server**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    # or
+    pnpm dev
+    # or
+    bun dev
+    ```
+
+5. **Open your browser**
+
+    Navigate to [http://localhost:3000](http://localhost:3000) to see the application.
+
+## Routes
+
+### Main Pages
+
+-   **`/`** - Home page with the changelog entry generation form
+-   **`/changelog`** - View all generated changelog entries
+
+### API Endpoints
+
+-   **`POST /api/generate-changelog`** - Generate ai powered changelog from commit messages
+-   **`POST /api/save-changelog`** - Save a changelog entry to a json file
+-   **`GET /api/get-changelog`** - Retrieve all changelog entries saved in file
+
+## Usage
+
+1. **Generate Changelog**:
+
+    - Go to the home page
+    - Paste your commit messages in the text area
+    - Click "Generate Changelog"
+    - Review the AI-generated summary and points
+
+2. **Publish Changelog**:
+
+    - Select a date for the entry
+    - Click "Publish" to save the changelog entry
+
+3. **View Changelog**:
+    - Navigate to `/changelog` to see all published entries
+    - Entries are sorted by date (newest first)
+
+## Data Storage
+
+Changelog entries are stored in `data/changelog.json`
+
+Used cursor for development
