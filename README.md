@@ -1,5 +1,7 @@
 # Changelog Generator
 
+https://www.loom.com/share/02c3f416c85f4bbda5d7c8d7d6633ead?sid=3dd540c9-4a91-49a3-9d0e-d761e0256220
+
 ## Features
 
 -   🤖 **AI-Powered Generation**: Uses OpenAI GPT-3.5rbo to convert raw commit messages into polished changelog entries
